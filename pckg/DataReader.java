@@ -9,12 +9,13 @@ public class DataReader
 {
 	private static Scanner scanner;
 	
+	@SuppressWarnings("static-access")
 	public DataReader(File fileName) throws FileNotFoundException
 	{
 		this.scanner=new Scanner(fileName);
 	}
 	
-	public void read(ProcessManager processManager) 
+	public void read(JobDispatch jobDispatch) 
 	{
 		while(scanner.hasNextLine())
 		{
@@ -54,7 +55,8 @@ public class DataReader
 					}
 				}
 			}
-			processManager.addProcessToList(new Process(arrivalTime, priority, burstTime));
+			
+			jobDispatch.addProsesToList(new Proses(arrivalTime, priority, burstTime));
 		}
 	}
 	
